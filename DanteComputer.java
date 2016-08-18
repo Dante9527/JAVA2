@@ -80,13 +80,34 @@ public class DanteComputer
 			   
 			   if(btn == cn)
 			   {
-				   //result = 0L ;
+				   result = 0L ;
 				   num    = 0L ;
 				   op     = 0  ;
 				   lab.setText(Long.toString(num));
-			   }else if(btn == ad)
+			   }
+			   else if(btn == ad)
 			   {
 				   save_num(ad) ;
+				   op = 1 ;
+			   }
+			   else if(btn == sub)
+			   {
+				   save_num(sub) ;
+				   op = 2 ;   
+			   }
+			   else if(btn == mul)
+			   {
+				   save_num(mul) ;
+				   op = 3 ;   
+			   }
+			   else if(btn == div)
+			   {
+				   save_num(div) ;
+				   op = 4 ;   
+			   }
+			   else if(btn == amo)
+			   {
+				   result = Long.parseLong(lab.getText()) ; 
 			   }
 		   }
 		   catch(NumberFormatException ne)
