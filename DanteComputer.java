@@ -9,11 +9,12 @@ public class DanteComputer
    private static Panel pa1 = new Panel(new GridLayout(4,3)) ;
    private static Panel pa2 = new Panel(new GridLayout(4,1)) ;
    private static Label lab = new Label("0",Label.RIGHT) ;
+                  //依序為 清除、加、減、乘、除、等於
    private static Button cn,ad,sub,mul,div,amo ;
    private static Button digits[] = new Button[10] ;
    
-   private static long num ;
-   private static byte op ;
+   private static long num ; //存放結果
+   private static byte op ; //代表運算子
    
    public static void main(String args[])
    {
@@ -54,7 +55,7 @@ public class DanteComputer
 	   div.addActionListener(new ActLis());
 	   
 	   frm.addWindowListener(new WindowAdapter()
-	   {public void windowSlosing(WindowEvent e){System.exit(0);}});
+	   {public void windowClosing(WindowEvent e){System.exit(0);}});
 	   frm.add(lab) ;
 	   frm.add(pa1) ;
 	   frm.add(pa2) ;
@@ -66,6 +67,8 @@ public class DanteComputer
    {
 	   public void actionPerformed(ActionEvent e)throws NumberFormatException,ArithmeticException
 	   {
+		   long result ;
+		   
 		   Button btn = (Button) e.getSource() ; 
 		   try
 		   {
@@ -107,11 +110,44 @@ public class DanteComputer
 			   }
 			   else if(btn == amo)
 			   {
-				   result = Long.parseLong(lab.getText()) ; 
+				   result = Long.parseLong(lab.getText()) ;
+				   
+				   switch(op)
+				   {
+				      case 1 :
+				    	  num += result ;
+				    	  break ;
+				      case 2 :
+				    	  num -= result ;
+				    	  break ;
+				      case 3 :
+				    	  num *= result ;
+				    	  break ;
+				      case 4 :
+				          num /= result ;
+				          break ;
+				      default :
+				   }
+				   
+				   result = 0L ;
+				   lab.setText(Long.toString(num));
 			   }
 		   }
 		   catch(NumberFormatException ne)
 		   {}
+		   catch(ArithmeticException ae)
+		   {}
+	   }
+	   
+	   private void output_digit(Button btn)
+	   {
+		   lab.setText(Long.toString(Long.parseLong(lab.getText()+btn.getLabel())));
+	   }
+	   
+	   private void save_num(Button opr)
+	   {
+		   num = Long.parseLong(lab.getText()) ;
+		   lab.setText(Long.toString(0L));
 	   }
    }
 }
