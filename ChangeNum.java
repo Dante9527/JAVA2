@@ -45,7 +45,6 @@ public class ChangeNum
     public void com() //計算
     {
     	this.turnNumNotZero() ;
-    	this.deleteTooMuchZero() ;
     	this.turnZero() ;
     }
     
@@ -60,18 +59,6 @@ public class ChangeNum
     	}
     	this.result = this.result.replaceAll("0",this.word[0]) ;
     	//replaceAll : 將符合 regex 置換成 replacement
-    }
-    
-    public void deleteTooMuchZero() //刪除多餘的零
-    {
-    	if(this.result.lastIndexOf("00") == -1)
-    	{
-    		return ;
-    	}
-    		
-    	this.result = this.result.replace("00" , "0") ;
-    	//replace : 將 oldChar 字元以 newChar 置換
-    	this.deleteTooMuchZero();
     }
     
     public void turnNumNotZero() //將非0數字轉換為大寫
