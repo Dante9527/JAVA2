@@ -26,7 +26,9 @@ public class ChangeNum
 		r = Integer.parseInt(r) + "" ;  
             }
 	    catch(IOException e)
-	    {}
+	    {
+	    	e.printStackTrace();
+	    }
         }
         while(!(Integer.parseInt(r) > 0 && Integer.parseInt(r) < 1000000000)) ; 
 	    
