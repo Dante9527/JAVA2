@@ -11,6 +11,11 @@ public class ChangeNum
     String result = "" ;
     String qs ;
     
+    public ChangeNum(String qs) 
+    {
+        this.qs = qs ;
+    }
+    
     public static void main(String[] args)
     {
         String r = "0" ;
@@ -78,10 +83,5 @@ public class ChangeNum
                 this.result += "0" ;
             }
         }
-    }
-	
-    public ChangeNum(String qs) 
-    {
-        this.qs = qs ;
     }
 }
