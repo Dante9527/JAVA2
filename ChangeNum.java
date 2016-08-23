@@ -6,40 +6,38 @@ import java.io.IOException;
 
 public class ChangeNum 
 {
-	String[] capital = {" ","拾","佰","仟","萬","拾萬","佰萬","仟萬","億","拾億","佰億","仟億"} ;
-	String[] word={" ","壹","貳","叁","肆","伍","陸","柒","捌","玖"} ;
+    String[] capital = {" ","拾","佰","仟","萬","拾萬","佰萬","仟萬","億","拾億","佰億","仟億"} ;
+    String[] word={" ","壹","貳","叁","肆","伍","陸","柒","捌","玖"} ;
     String result = "" ;
     String qs ;
     
-	public static void main(String[] args)
-	{
-    	String r = "0" ;
-	    BufferedReader in = new BufferedReader(new InputStreamReader(System.in)) ;
-	    
-	    do
-	    {
-			System.out.println("請輸入正整數 : ") ;
-			
-			try //得到輸入正整數 
-			{
-				r = in.readLine() ; 
-				r = Integer.parseInt(r) + "" ;  
-			}
-			catch(IOException e)
-			{}
-	    }
-	    while(!(Integer.parseInt(r) > 0 && Integer.parseInt(r) < 1000000000)) ; 
-	    
-	    ChangeNum cn = new ChangeNum(r + "") ;
-	    System.out.print(cn.getUpper() + " 元正");
-	 }
-	
-	public String getUpper() //轉大寫
+    public static void main(String[] args)
     {
-    	this.com() ;
+        String r = "0" ;
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in)) ;
+	    
+        do
+        {
+            System.out.println("請輸入正整數 : ") ;
+			
+            try //得到輸入正整數 
+            {
+                r = in.readLine() ; 
+		r = Integer.parseInt(r) + "" ;  
+            }
+	    catch(IOException e)
+	    {}
+        }
+        while(!(Integer.parseInt(r) > 0 && Integer.parseInt(r) < 1000000000)) ; 
+	    
+        ChangeNum cn = new ChangeNum(r + "") ;
+        System.out.print(cn.getUpper() + " 元正");
+    }
+	
+    public String getUpper() //轉大寫
+    {
+        this.com() ;
     	return this.result ;
-    	
-   
     }
     
     public void com() //計算
