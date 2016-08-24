@@ -50,22 +50,22 @@ public class ChangeNum
     public void com() //計算
     {
         this.turnNumNotZero() ;
-        // this.turnZero() ;
+        this.turnZero() ;
     }
     
-    //public void turnZero() //刪除多餘的零
-    //{
-    //    if(this.result.lastIndexOf("0") == this.result.length() -1) //最後是0的情況
-    //	{
-    //        //lastIndexOf : 回傳搜尋字串最後出現的索引值 
+    public void turnZero() //刪除多餘的零
+    {
+        if(this.result.lastIndexOf("0") == this.result.length() -1) //最後是0的情況
+    	{
+            //lastIndexOf : 回傳搜尋字串最後出現的索引值 
     		
-    //        this.result=this.result.substring(0,this.result.length()-1);
-    //        //substring : 回傳從 beginIndex 到 endIndex 之間的子字串
-    //	}
+            this.result=this.result.substring(0,this.result.length()-1);
+            //substring : 回傳從 beginIndex 到 endIndex 之間的子字串
+    	}
     	
-    //    this.result = this.result.replaceAll("0",this.word[0]) ;
-    //	//replaceAll : 將符合 regex 置換成 replacement
-    //}
+        this.result = this.result.replaceAll("0",this.word[0]) ;
+    	//replaceAll : 將符合 regex 置換成 replacement
+    }
     
     public void turnNumNotZero() //將非0數字轉換為大寫
     {
