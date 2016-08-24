@@ -53,7 +53,7 @@ public class ChangeNum
         this.turnZero() ;
     }
     
-    public void turnZero() //將0轉換為零
+    public void turnZero() //刪除多餘的零
     {
         if(this.result.lastIndexOf("0") == this.result.length() -1) //最後是0的情況
     	{
