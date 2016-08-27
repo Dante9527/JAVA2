@@ -49,11 +49,12 @@ public class ChangeNum
     
     public void com() //計算
     {
-        this.turnNumNotZero() ;
-        this.turnZero() ;
+        this.turnNumNotZero() ; //1.將非0數字轉換為大寫
+        this.deleteTooMuchZero() ; //2.刪除多餘的零
+        this.turnZero() ; // 3.0 == 零
     }
     
-    public void turnZero() //刪除多餘的零
+    public void turnZero() // 0 == 零
     {
         if(result.lastIndexOf("0") == result.length() -1) //最後是0的情況
     	{
@@ -65,6 +66,17 @@ public class ChangeNum
     	
         result = result.replaceAll("0",word[0]) ;
     	//replaceAll : 將符合 regex 置換成 replacement
+    }
+    
+     public void deleteTooMuchZero() //刪除多餘的零
+    {
+    	if(result.indexOf("00") == -1)
+    	{
+    		return ;
+    	}
+    	
+    	result = result.replace("00", "0") ;
+    	deleteTooMuchZero();
     }
     
     public void turnNumNotZero() //將非0數字轉換為大寫
