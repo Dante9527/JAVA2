@@ -1,0 +1,75 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton ;
+import javax.swing.JFrame;
+import javax.swing.JLabel ;
+import javax.swing.JPanel ;
+
+public class Lotto
+{
+	private JFrame frame ;
+	private JButton button ;
+	private JPanel pan1 , pan2 ;
+	static int[] num ;
+	
+	Lotto()
+	{
+		Gui() ;
+	}
+	
+	public void Gui()
+	{
+		frame   = new JFrame("樂透") ;
+		button  = new JButton("GO") ;
+		pan1    = new JPanel () ;
+		pan2    = new JPanel (new GridLayout(2,3)) ;
+		
+		pan1.add(button) ;
+		
+		frame.setSize(600,600) ;
+		frame.setVisible(true) ;
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE) ;
+		frame.getContentPane().add(BorderLayout.NORTH,pan1) ;
+		frame.add(pan2) ;
+		
+		button.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ae)
+			{
+				num = new int[6] ;
+				int rand ;
+				boolean isOk ;
+				
+				for(int i=0 ; i< num.length ; i ++)
+				{
+					do
+					{
+						rand = (int)(Math.random()*49 +1) ;
+						isOk = true ;
+						
+						for(int j = 0 ; j < i ; j ++)
+						{
+							if(num[j] == rand)
+							{
+								isOk = false ;
+								break ;
+							}
+						}
+					}while(!isOk) ;
+					
+					num[i] = rand ;
+					
+					pan2.add(new JLabel(Integer.toString(num[i]))) ;
+				}	
+			}
+		});
+		
+	}
+	public static void main(String[] args) 
+	{
+		new Lotto() ;
+	}
+}
